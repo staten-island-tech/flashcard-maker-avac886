@@ -1,3 +1,3 @@
 class flashcard():
-    def teacher_mode():
+    def __init__(self, statement, answer):
         
