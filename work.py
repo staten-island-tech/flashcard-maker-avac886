@@ -1,11 +1,25 @@
+import json
+
 class flashcard():
-    def __init__(self, subject, phrase, answer):
-        self.subject = subject
+    def __init__(self, phrase, answer):
         self.phrase = phrase
         self.answer = answer
     def display(self):
         return f"{self.phrase}: {self.answer}"
     def dict(self):
-        return {"subject": self.subject, "phrase": self.phrase, "answer": self.answer}
+        return {"phrase": self.phrase, "answer": self.answer}
 
-new_flashcard = flashcard
+
+cards = []
+new_phrase = input("Enter an English phrase/word: ")
+new_answer = input("Enter the Russian translation of that phrase/word: ")
+new_flashcard = flashcard(new_phrase, new_answer)
+cards_data = [flashcard.to_dict() for flashcard in cards]
+
+
+cards.append(new_flashcard)
+cards_data = [flashcard.dict() for flashcard in cards]
+with open('flashcards.json', 'w', encoding='utf-8') as json_file:
+    json.dump(cards_data, json_file, ensure_ascii=False, indent=4)
+
+
