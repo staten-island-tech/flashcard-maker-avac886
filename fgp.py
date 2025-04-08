@@ -9,6 +9,7 @@ class flashcard():
     def dict(self):
         return {"phrase": self.phrase, "answer": self.answer}
 
+
 cards = []
 new_phrase = input("Enter an English phrase/word: ")
 new_answer = input("Enter the Russian translation of that phrase/word: ")
@@ -23,4 +24,5 @@ cards_data.append(new_flashcard.dict()) # dict not to_dict dummy
 with open("cards.json", "w") as file:
     json.dump(cards_data, file, indent=4)
 
-
+for card in cards_data:
+    print(new_flashcard.display())
