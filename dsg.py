@@ -80,4 +80,6 @@ with open("flashcards.json", "w") as file:
 
 for card in cards_data:
     print(card)
-    print(new_flashcard.display())
+    print(new_flashcard.dict())
+    for data in new_flashcard.dict():
+        print(data)
