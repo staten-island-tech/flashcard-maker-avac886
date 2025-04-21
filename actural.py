@@ -1,5 +1,3 @@
-
-#REALx
 while True:
     import json
 
@@ -41,24 +39,25 @@ while True:
     if position == "student":
 
         streak = 0
-        score = 0
+        points = 0
+        total_correct = 0
 
         flashcards = [Flashcard(card['phrase'], card['answer']) for card in cards_data]
 
         for card in flashcards:
-            print(f"Phrase: {card.display_phrase()}")
-            guess = input("Enter translation: ")
-            if card.display_phrase == guess:
+            print("Phrase:")
+            card.display_phrase()
+            guess = input("Enter translation:")
+            if card.answer == guess:
                 print("correct")
-                score = score + 1
                 streak = streak + 1
-                if streak > 0:
-                    score = score + 1
-                print(f"Your current score is {score}")
-                print(f"Your current streak is {streak}")
+                points = points + 1
+                total_correct = total_correct + 1
+                if streak > 1:
+                    points = points + 1
             else:
-                print("incorrect")
-                card.display_answer()
                 streak = 0
-                print(f"Your current score is {score}")
-                print(f"Womp womp you lost your streak. It is now {streak}. Bring it back up loser.")
+                print(f"Incorrect. Womp womp you lost your streak. It is now {streak}. Bring it back up loser.")
+            print(f"You got {total_correct} phrases correct")
+            print(f"Your current score is {points}")
+            print(f"Your current streak is {streak}")
