@@ -47,6 +47,8 @@ for i in range(2):
         json.dump(cards_data, file, indent=4)
  """
 
+#REAL
+
 import json
 
 class Flashcard:
@@ -54,8 +56,11 @@ class Flashcard:
         self.phrase = phrase
         self.answer = answer
     
-    def display(self):
-        return f"{self.phrase}: {self.answer}"
+    def display_phrase(self):
+        print(self.phrase)
+
+    def display_answer(self):
+        print(self.answer)
     
     def dict(self):
         return {"phrase": self.phrase, "answer": self.answer}
@@ -78,8 +83,22 @@ for i in range(2):
 with open("flashcards.json", "w") as file:
     json.dump(cards_data, file, indent=4)
 
+streak = 0
+score = 0
+
 for card in cards_data:
-    print(card)
-    print(new_flashcard.dict())
-    for data in new_flashcard.dict():
-        print(data)
+    print(card['phrase'])
+    guess = input("Enter translation: ")
+    if card['answer'] == guess:
+        print("correct")
+        score = score + 1
+        streak = streak + 1
+        if streak > 0:
+            score = score + 1
+        print(score)
+        print(streak)
+    else:
+        print("incorrect")
+        streak = 0
+        print(score)
+        print(streak)
