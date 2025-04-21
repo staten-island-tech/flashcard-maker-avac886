@@ -62,7 +62,7 @@ class Flashcard:
     def display_answer(self):
         print(self.answer)
     
-    def dict(self):
+    def to_dict(self):
         return {"phrase": self.phrase, "answer": self.answer}
 
 
@@ -78,7 +78,7 @@ for i in range(2):
     
     new_flashcard = Flashcard(new_phrase, new_answer)
     
-    cards_data.append(new_flashcard.dict())
+    cards_data.append(new_flashcard.to_dict())
 
 with open("flashcards.json", "w") as file:
     json.dump(cards_data, file, indent=4)
@@ -99,6 +99,7 @@ for card in cards_data:
         print(streak)
     else:
         print("incorrect")
+        print(card['answer'])
         streak = 0
         print(score)
         print(streak)
