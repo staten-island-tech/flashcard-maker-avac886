@@ -1,7 +1,7 @@
 while True:
     import json
 
-    position = input("Yo are you a teacher or student?")
+    mode = input("Yo are you a teacher or student?")
 
     class Flashcard:
         def __init__(self, phrase, answer):
@@ -23,7 +23,7 @@ while True:
     except FileNotFoundError:
         cards_data = []
 
-    if position == "teacher":
+    if mode == "teacher":
         amount = int(input("What is the absurd amount of defintions you want to torture your kids with? "))
         for i in range(amount): 
             new_phrase = input("Enter an English phrase/word: ")
@@ -36,7 +36,7 @@ while True:
     with open("flashcards.json", "w") as file:
         json.dump(cards_data, file, indent=4)
 
-    if position == "student":
+    if mode == "student":
 
         streak = 0
         points = 0
